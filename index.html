@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>QR Code Generator — CodeWithUzma</title>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="card" role="application" aria-label="QR Code Generator">
+            <div>
+                <header>
+                    <div>
+                        <div class="logo">✦ CodeWithUzma ✦</div>
+                        <h1>QR Code Generator</h1>
+                        <p class="lead">Paste text or URL below and generate a high-quality QR. Customize size, colors,
+                            and error correction. Save as PNG.</p>
+                    </div>
+                </header>
+
+                <div class="controls" id="controls">
+                    <label for="textInput">Text / URL</label>
+                    <input id="textInput" type="text" placeholder="e.g. https://codewithuzma.com or Hello Uzma!" />
+
+                    <div class="options" style="margin-top:12px;">
+                        <div>
+                            <label for="size">Size (px)</label>
+                            <input id="size" type="number" min="100" max="1200" value="280" />
+                        </div>
+                        <div>
+                            <label for="ec">Error Correction</label>
+                            <select id="ec">
+                                <option value="L">L — ~7% recovery</option>
+                                <option value="M" selected>M — ~15% recovery</option>
+                                <option value="Q">Q — ~25% recovery</option>
+                                <option value="H">H — ~30% recovery</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="fg">Foreground</label>
+                            <input id="fg" type="color" value="#0b1220" />
+                        </div>
+                        <div>
+                            <label for="bg">Background</label>
+                            <input id="bg" type="color" value="#ffffff" />
+                        </div>
+                    </div>
+
+                    <div style="margin-top:12px; display:flex; gap:8px;">
+                        <button class="btn" id="generateBtn" aria-label="Generate QR">Generate</button>
+                        <button class="btn ghost" id="clearBtn" aria-label="Clear">Clear</button>
+                        <button class="btn ghost" id="downloadBtn" aria-label="Download PNG" disabled>Download
+                            PNG</button>
+                    </div>
+
+                    <div class="help hint">Tip: Use a URL (https://...) for websites. Increase size for printing.</div>
+                </div>
+            </div>
+
+            <aside class="preview" aria-live="polite">
+                <div class="qr-box" id="qrContainer" aria-hidden="false">
+                    <div id="placeholder" class="meta">Your QR preview will appear here</div>
+                </div>
+                <div style="width:100%; display:flex; justify-content:center; gap:8px;">
+                    <div class="meta" id="metaText">No content</div>
+                </div>
+            </aside>
+
+            <footer>
+                <div>Made with ❤️ <strong>CodeWithUzma</strong></div>
+                <div class="meta">QR uses client-side generation • No data leaves your browser</div>
+            </footer>
+        </div>
+    </div>
+
+    <!-- QR library (browser build) -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
